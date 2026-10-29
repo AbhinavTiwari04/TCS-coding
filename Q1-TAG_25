@@ -1,0 +1,34 @@
+#Three numbers represents that how many times three unqiue alphabets repeats now give all permutations for that
+
+import java.util.*;
+
+class Main {
+    public static void generate(int a, int b, int c, StringBuilder sb){
+        if(a==0 && b==0 && c==0){
+        System.out.println(sb.toString());
+        return;
+        }
+        if(a>0){
+            sb.append("a");
+            generate(a-1,b,c,sb);
+            sb.deleteCharAt(sb.length()-1);
+        }
+        if(b>0){
+            sb.append("b");
+            generate(a,b-1,c,sb);
+            sb.deleteCharAt(sb.length()-1);
+        }
+        if(c>0){
+            sb.append("c");
+            generate(a,b,c-1,sb);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int c=sc.nextInt();
+        generate(a,b,c,new StringBuilder());
+    }
+}
